@@ -3,6 +3,7 @@
 Description: 
 
 This is a rails based web application. 
+Utilizing the Fitbit api! 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
