@@ -1,3 +1,5 @@
+require 'date'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,14 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+binding.pry
+num = params[:duration]
+
+api_array = get_date_strings(num)
+binding.pry
+
+
+  # FIT BIT API CALL AND OATH AUTHENITFICATION   
     # Load the existing yml config
 config = begin
   Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
@@ -61,6 +71,8 @@ end
  
 # ============================================================
 # Add Fitgem API calls on the client object below this line
+
+
 
 @info = client.activities_on_date '2015-03-03'
 
