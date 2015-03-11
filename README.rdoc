@@ -5,6 +5,18 @@ Description:
 This is a rails based web application. 
 Utilizing the Fitbit api! 
 
+== Our github procedure
+
+* git pull origin master before you make a new branch
+* make a new branch, name it with your name and task, e.g., mike-js
+* commit changes on branch and push up
+* make a pull request
+* merge changes
+* everybody pulls down
+* BUT commit changes on your branch before you pull down from master
+
+==
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
