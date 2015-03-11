@@ -57,6 +57,8 @@ GEM
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.4.0)
+    fitgem (0.10.0)
+      oauth
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -80,6 +82,7 @@ GEM
     multi_json (1.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    oauth (0.4.7)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -158,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  fitgem
   jbuilder (~> 2.0)
   jquery-rails
   pg
