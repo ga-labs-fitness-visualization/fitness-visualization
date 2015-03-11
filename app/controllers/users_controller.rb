@@ -12,12 +12,16 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-binding.pry
-num = params[:duration]
-
-api_array = get_date_strings(num)
-binding.pry
-
+    
+    # When we get html to render page, there won't be params[:duration]
+    # so the if block is needed to let the html page load
+    if params[:duration]
+      num = params[:duration].to_i
+      api_array = get_date_strings(num)
+      Pry.start(binding)
+      # I think the whole API call will have to go here
+      # inside the IF block
+    end
 
   # FIT BIT API CALL AND OATH AUTHENITFICATION   
     # Load the existing yml config
