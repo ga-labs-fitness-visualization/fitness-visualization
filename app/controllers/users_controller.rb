@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
     # Load the existing yml config
 config = begin
   Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
@@ -66,9 +65,10 @@ end
 @info = client.activities_on_date '2015-03-03'
 
 fitbit_info = {info: @info}
-     respond_to do |format|
-    format.json {render json: fitbit_info}
-
+    respond_to do |format|
+      format.html
+      format.json { render json: @info }
+    end
   end
 
   # GET /users/new
