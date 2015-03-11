@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   
-  	def get_date_strings(num)
+  def get_date_strings(num)
 		i = 1
 		date_strings_array = []
 		while (i <= num)
