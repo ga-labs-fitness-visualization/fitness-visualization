@@ -65,6 +65,10 @@ end
 
 @info = client.activities_on_date '2015-03-03'
 
+fitbit_info = {info: @info}
+     respond_to do |format|
+    format.json {render json: fitbit_info}
+
   end
 
   # GET /users/new
