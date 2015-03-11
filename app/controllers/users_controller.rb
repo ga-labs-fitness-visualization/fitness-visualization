@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     if params[:duration]
       num = params[:duration].to_i
       api_array = get_date_strings(num)
-      Pry.start(binding)
       # I think the whole API call will have to go here
       # inside the IF block
     end
