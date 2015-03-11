@@ -1,3 +1,48 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.floors-progress {
+  position: absolute;
+  height: 460px;
+  width: 144px;
+  margin: 40px 20px;
+/*  top: 4%;
+  height: 96%;
+  width: 60%;*/
+}
+
+.building {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background-image: url(/assets/ESB-no-bg.png);
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.building-mask {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  bottom: -1px;
+  left: 0px;
+  background-image: url(ESB-mask.png);
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.building-bar {
+  position: absolute;
+  z-index: 0;
+  height: 5%;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background: red;
+  opacity: 0.35;
+}
