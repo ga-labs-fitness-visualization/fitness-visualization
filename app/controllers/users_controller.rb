@@ -78,7 +78,6 @@ end
 fitbit_userinfo_hash = client.activities_on_date '2015-03-03'
 @user_total_distance = fitbit_userinfo_hash['summary']['distances'][0]['distance']
 @user_total_floors = fitbit_userinfo_hash['summary']['floors']
-binding.pry
 
 @fitbit_info = {miles: @user_total_distance, floors: @user_total_floors}
     respond_to do |format|
