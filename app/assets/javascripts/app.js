@@ -28,6 +28,8 @@ $(function(){
         console.log(data);
         console.log('You climbed ' + parseFloors(data) + ' floors.');
         console.log('You moved ' + parseDistance(data) + ' miles.');
+        var totalFloors = parseFloors(data);
+        Building.makeBuildings(totalFloors);
       }
     })
   });
