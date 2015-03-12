@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'users#index'
+
   resources :users, only: [:show, :index]
   resources :daily_activites 
 
