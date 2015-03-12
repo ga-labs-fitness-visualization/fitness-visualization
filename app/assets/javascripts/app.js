@@ -44,6 +44,9 @@ $(function(){
       method: 'GET',
       success: function(data){
         console.log(data);
+        var totalFloors = parseFloors(data);
+        var buildingCollection = Building.makeBuildings(totalFloors);
+        var buildingCollectionView = new BuildingCollectionView(buildingCollection);
       }
     })
   });
@@ -56,6 +59,9 @@ $(function(){
       method: 'GET',
       success: function(data){
         console.log(data);
+        var totalFloors = parseFloors(data);
+        var buildingCollection = Building.makeBuildings(totalFloors);
+        var buildingCollectionView = new BuildingCollectionView(buildingCollection);
       }
     })    
   });

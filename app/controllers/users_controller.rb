@@ -12,17 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    
-    # When we get html to render page, there won't be params[:duration]
-    # so the if block is needed to let the html page load
-    if params[:duration]
-      num = params[:duration].to_i
-      api_array = get_date_strings(num)
-      # I think the whole API call will have to go here
-      # inside the IF block
-    end
-
-  # FIT BIT API CALL AND OATH AUTHENITFICATION   
+       # FIT BIT API CALL AND OATH AUTHENITFICATION   
     # Load the existing yml config
 config = begin
   Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
@@ -75,16 +65,30 @@ end
 # ============================================================
 # Add Fitgem API calls on the client object below this line
 
-fitbit_userinfo_hash = client.activities_on_date '2015-03-03'
-@user_total_distance = fitbit_userinfo_hash['summary']['distances'][0]['distance']
-@user_total_floors = fitbit_userinfo_hash['summary']['floors']
+if params[:duration]
+  num = params[:duration].to_i
+  api_array = get_date_strings(num)
+  all_activities = {
+    floors: 0,
+    miles: 0
+  }
+  api_array.each do |day|
+    fitbit_userinfo_hash = client.activities_on_date day
+    all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
+    all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
 
-@fitbit_info = {miles: @user_total_distance, floors: @user_total_floors}
-    respond_to do |format|
-      format.html
-      format.json { render json: @fitbit_info }
-    end
   end
+
+  @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
+
+end
+
+respond_to do |format|
+  format.html
+  format.json { render json: @fitbit_info }
+end
+
+end
 
   # GET /users/new
   def new
