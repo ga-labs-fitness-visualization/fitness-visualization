@@ -17,6 +17,7 @@ BuildingCollectionView.prototype.render = function() {
     var newView = new BuildingView(model);
     newView.$el.css('left', (this.collection.models.indexOf(model) * 200).toString() + 'px');
     this.$el().append(newView.render().$el)
-    newView.showProgress(newView.model.progress);
+    setTimeout(function(){newView.showProgress(newView.model.progress)}, (this.collection.models.indexOf(model) * 750));
+    // newView.showProgress(newView.model.progress);
   }.bind(this))
 }
