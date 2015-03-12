@@ -7,12 +7,12 @@ $(function(){
   //these functions get floors and distance out of the json object
   //just placeholders until this is done in the back end
   var parseFloors = function(data) {
-    var totalFloors = data["summary"]["floors"];
+    var totalFloors = data["floors"];
     return totalFloors;
   }
 
   var parseDistance = function(data) {
-    var totalDistance = data["summary"]["distances"][0]["distance"];
+    var totalDistance = data["miles"];
     return totalDistance;
   }
 
