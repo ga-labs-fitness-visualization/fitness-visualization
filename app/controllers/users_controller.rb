@@ -75,14 +75,15 @@ end
 # ============================================================
 # Add Fitgem API calls on the client object below this line
 
+fitbit_userinfo_hash = client.activities_on_date '2015-03-03'
+@user_total_distance = fitbit_userinfo_hash['summary']['distances'][0]['distance']
+@user_total_floors = fitbit_userinfo_hash['summary']['floors']
+binding.pry
 
-
-@info = client.activities_on_date '2015-03-03'
-
-fitbit_info = {info: @info}
+@fitbit_info = {miles: @user_total_distance, floors: @user_total_floors}
     respond_to do |format|
       format.html
-      format.json { render json: @info }
+      format.json { render json: @fitbit_info }
     end
   end
 
