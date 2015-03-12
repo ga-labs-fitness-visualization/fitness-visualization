@@ -5,5 +5,4 @@ var BuildingCollection = function() {
 BuildingCollection.prototype.add = function(building) {
   this.models.push(building);
   // let other models know this
-  $(this).trigger('change');
 }
