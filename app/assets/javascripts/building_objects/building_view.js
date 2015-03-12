@@ -14,5 +14,5 @@ BuildingView.prototype.render = function() {
 }
 
 BuildingView.prototype.showProgress = function(height){
-  this.$bar.animate({height: height, }, 1000, 'easeInOutBack');
+  this.$bar.animate({height: height, }, 1500, 'easeInOutBack');
 }

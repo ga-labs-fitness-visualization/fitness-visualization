@@ -52,29 +52,23 @@ $(function(){
   });
 
   $('#get-data-month').click(function(){
-    $.ajax({
-      url: '/users/' + id,
-      data: { duration: 30},
-      dataType: 'json',
-      method: 'GET',
-      success: function(data){
-        console.log(data);
-        var totalFloors = parseFloors(data);
-        var buildingCollection = Building.makeBuildings(totalFloors);
-        var buildingCollectionView = new BuildingCollectionView(buildingCollection);
-      }
-    })    
+    // DO NOT DELETE!!!!
+    // $.ajax({
+    //   url: '/users/' + id,
+    //   data: { duration: 30},
+    //   dataType: 'json',
+    //   method: 'GET',
+    //   success: function(data){
+    //     console.log(data);
+    //     var totalFloors = parseFloors(data);
+    //     var buildingCollection = Building.makeBuildings(totalFloors);
+    //     var buildingCollectionView = new BuildingCollectionView(buildingCollection);
+    //   }
+    // })    
+    // DO NOT DELETE!!!
+      var totalFloors = 420
+      var buildingCollection = Building.makeBuildings(totalFloors);
+      var buildingCollectionView = new BuildingCollectionView(buildingCollection);
   });
-
-  // just testing out getting a building to render and animate on page load
-  // this will NOT be part of the final code
-  // var esb = new Building();
-  // var testView = new BuildingView(esb);
-  // testView.render();
-  // testView.$el.css('left', '200px');
-  // $('#buildings').append( testView.$el );
-  // setTimeout(function(){
-  //   testView.$bar.animate({height: "55%", }, 1000, 'easeInOutBack')
-  // }, 500);
 
 })
