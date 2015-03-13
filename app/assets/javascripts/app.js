@@ -39,6 +39,9 @@ $(function(){
         var buildingCollection = Building.makeBuildings(totalFloors);
         var buildingCollectionView = new BuildingCollectionView(buildingCollection);
 
+        var totalDistance = parseDistance(data);
+        var walkCollection = Walk.makeWalks(totalDistance);
+        var walkCollectionView = new WalkCollectionView(walkCollection);
       }
     })
   });
@@ -55,6 +58,10 @@ $(function(){
         var totalFloors = parseFloors(data);
         var buildingCollection = Building.makeBuildings(totalFloors);
         var buildingCollectionView = new BuildingCollectionView(buildingCollection);
+
+        var totalDistance = parseDistance(data);
+        var walkCollection = Walk.makeWalks(totalDistance);
+        var walkCollectionView = new WalkCollectionView(walkCollection);
       }
     })
   });
@@ -77,6 +84,10 @@ $(function(){
       var totalFloors = 420
       var buildingCollection = Building.makeBuildings(totalFloors);
       var buildingCollectionView = new BuildingCollectionView(buildingCollection);
+
+      var totalDistance = 100;
+      var walkCollection = Walk.makeWalks(totalDistance);
+      var walkCollectionView = new WalkCollectionView(walkCollection);
   });
 
 })
