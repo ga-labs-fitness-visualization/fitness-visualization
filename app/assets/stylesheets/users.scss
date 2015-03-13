@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#buildings {
+  width: 600px;
+  margin: 0 auto;
+  }
+
 .floors-progress {
   position: absolute;
   float: left;
@@ -46,4 +51,10 @@
   left: 0px;
   background: red;
   opacity: 0.35;
+}
+
+img.spinner {
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
 }
