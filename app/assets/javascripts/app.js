@@ -16,9 +16,16 @@ $(function(){
     return totalDistance;
   }
 
+  var addSpinner = function() {
+    $('#buildings').html('<p>Loading your data...</p>')
+    var img = $("<img src='../assets/ajaxSpinner.gif'>").addClass('spinner');
+    $('#buildings').append( img );
+  }
+
   //set click handlers on buttons
   // success callback function will initiate the object creation/collection/render/animation process
   $('#get-data-day').click(function(){
+    addSpinner();
     $.ajax({
       url: '/users/' + id,
       data: { duration: 1},
@@ -37,6 +44,7 @@ $(function(){
   });
 
   $('#get-data-week').click(function(){
+    addSpinner();
     $.ajax({
       url: '/users/' + id,
       data: { duration: 7},
