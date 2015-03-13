@@ -58,3 +58,45 @@ img.spinner {
   height: auto;
   margin: 0 auto;
 }
+
+.miles-progress {
+  position: absolute;
+  height: 460px;
+  width: 212px;
+  left: 200px;
+  margin: 0;
+}
+
+.walk {
+  position: absolute;
+  z-index: 1;
+  height: 101%;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background-image: url('manhattan-narrow.png');
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.walk-bar-left {
+  position: absolute;
+  z-index: 0;
+  height: 0%;
+  width: 47%;
+  bottom: 0px;
+  left: 0px;
+  background: red;
+  opacity: 0.55;
+}
+
+.walk-bar-right {
+  position: absolute;
+  z-index: 0;
+  height: 0%;
+  width: 53%;
+  top: 0px;
+  right: 0px;
+  background: red;
+  opacity: 0.55;
+}

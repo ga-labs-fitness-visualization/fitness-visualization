@@ -12,7 +12,7 @@ var Building = function (args) {
 }
 
 // hard-coded to 102 floors
-// will need major refactoring / rethinking if we ever want to make a series of different buildings
+// will need refactoring / rethinking if we ever want to make a series of different buildings
 Building.makeBuildings = function(totalFloors) {
   var dayBuildingCollection = new BuildingCollection();
   while (totalFloors > 0) {
