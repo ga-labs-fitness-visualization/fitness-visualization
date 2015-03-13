@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @user.name %></h2>
+<% if current_user == @user %>
+  <h2>Welcome, <%= @user.name %>!</h2>
+<% else %>
+  <h2><%= @user.name %> </h2>
+<% end %> 
+
 <h2><%= @fitbit_info %> </h2>
 
 <button id='get-data-day'>day</button>
