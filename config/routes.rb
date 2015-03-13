@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   
-  root 'users#index'
-
-  resources :users, only: [:show, :index]
+  root 'sessions#new'
+  get '/login' =>'sessions#new'
+  post '/sessions' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  get '/signup' => 'users#new'
+  
+  resources :users
   resources :daily_activites 
 
   # The priority is based upon order of creation: first created -> highest priority.

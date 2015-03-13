@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::Base
   
+	helper_method :current_user
+
+	def current_user
+		return nil unless session[:session_token]
+		User.find_by(session_token: session[:session_token])
+	end
+
   def get_date_strings(num)
 		i = 1
 		date_strings_array = []
