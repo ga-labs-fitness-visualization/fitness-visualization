@@ -9,86 +9,95 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def fitbit_login
+
+  end
+
+  def fitbit_callback
+    Pry.start(binding)
+    verifier = params[:oauth_verifier]
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
-       # FIT BIT API CALL AND OATH AUTHENITFICATION   
+    # FIT BIT API CALL AND OATH AUTHENITFICATION   
     # Load the existing yml config
-config = begin
-  Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
-rescue ArgumentError => e
-  puts "Could not parse YAML: #{e.message}"
-  exit
-end
+    config = begin
+      Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+      exit
+    end
  
-client = Fitgem::Client.new(config[:oauth])
+    client = Fitgem::Client.new(config[:oauth])
  
-# With the token and secret, we will try to use them
-# to reconstitute a usable Fitgem::Client
-if config[:oauth][:token] && config[:oauth][:secret]
-  begin
-    access_token = client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-  rescue Exception => e
-    puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
-    exit
-  end
-# Without the secret and token, initialize the Fitgem::Client
-# and send the user to login and get a verifier token
-else
-  request_token = client.request_token
-  token = request_token.token
-  secret = request_token.secret
+    # With the token and secret, we will try to use them
+    # to reconstitute a usable Fitgem::Client
+    if config[:oauth][:token] && config[:oauth][:secret]
+      begin
+        access_token = client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+      rescue Exception => e
+        puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
+        exit
+      end
+    # Without the secret and token, initialize the Fitgem::Client
+    # and send the user to login and get a verifier token
+    else
+      request_token = client.request_token
+      token = request_token.token
+      secret = request_token.secret
+     
+      puts "Go to https://www.fitbit.com/oauth/authorize?oauth_token=#{token} and then enter the verifier code below"
+      verifier = gets.chomp
+     
+      begin
+        access_token = client.authorize(token, secret, { :oauth_verifier => verifier })
+      rescue Exception => e
+        puts "Error: Could not authorize Fitgem::Client with supplied oauth verifier"
+        exit
+      end
  
-  puts "Go to https://www.fitbit.com/oauth/authorize?oauth_token=#{token} and then enter the verifier code below"
-  verifier = gets.chomp
- 
-  begin
-    access_token = client.authorize(token, secret, { :oauth_verifier => verifier })
-  rescue Exception => e
-    puts "Error: Could not authorize Fitgem::Client with supplied oauth verifier"
-    exit
-  end
- 
-  puts 'Verifier is: '+verifier
-  puts "Token is:    "+access_token.token
-  puts "Secret is:   "+access_token.secret
- 
-  user_id = client.user_info['user']['encodedId']
-  puts "Current User is: "+user_id
- 
-  config[:oauth].merge!(:token => access_token.token, :secret => access_token.secret, :user_id => user_id)
- 
-  # Write the whole oauth token set back to the config file
-  File.open("fitgem.yml", "w") {|f| f.write(config.to_yaml) }
-end
+      puts 'Verifier is: '+verifier
+      puts "Token is:    "+access_token.token
+      puts "Secret is:   "+access_token.secret
+     
+      user_id = client.user_info['user']['encodedId']
+      puts "Current User is: "+user_id
+     
+      config[:oauth].merge!(:token => access_token.token, :secret => access_token.secret, :user_id => user_id)
+     
+      # Write the whole oauth token set back to the config file
+      File.open("fitgem.yml", "w") {|f| f.write(config.to_yaml) }
+    end
  
 # ============================================================
 # Add Fitgem API calls on the client object below this line
 
-if params[:duration]
-  num = params[:duration].to_i
-  api_array = get_date_strings(num)
-  all_activities = {
-    floors: 0,
-    miles: 0
-  }
-  api_array.each do |day|
-    fitbit_userinfo_hash = client.activities_on_date day
-    all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
-    all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
+    if params[:duration]
+      num = params[:duration].to_i
+      api_array = get_date_strings(num)
+      all_activities = {
+        floors: 0,
+        miles: 0
+      }
+      api_array.each do |day|
+        fitbit_userinfo_hash = client.activities_on_date day
+        all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
+        all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
+
+      end
+
+      @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
+
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @fitbit_info }
+    end
 
   end
-
-  @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
-
-end
-
-respond_to do |format|
-  format.html
-  format.json { render json: @fitbit_info }
-end
-
-end
 
   # GET /users/new
   def new
