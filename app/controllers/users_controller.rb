@@ -61,7 +61,6 @@ class UsersController < ApplicationController
         end
         i += 1
       end
-      binding.pry
       render :show
 
     # Without the secret and token, initialize the Fitgem::Client
