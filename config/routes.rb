@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   
-  get '/users/fitbitlogin' => 'users#fitbit_login'
+  get '/users/fitbitlogin' => 'users#fitbit_login', as: 'fitbit_login'
 
-  get '/users/fitbitcallback' => 'users#fitbit_callback'
+  get '/users/fitbitcallback' => 'users#fitbit_callback', as: 'fitbit_callback'
 
   resources :users
   # resources :daily_activities 
