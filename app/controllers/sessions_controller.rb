@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
       @user.session_token = token
       @user.save
 
-      redirect_to @user
+      # redirect_to @user
+      redirect_to fitbit_login_url
     else
       @user = User.new(email: session_params[:email])
 

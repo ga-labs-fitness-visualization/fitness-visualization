@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   
+  get '/users/fitbitlogin' => 'users#fitbit_login', as: 'fitbit_login'
+
+  get '/users/fitbitcallback' => 'users#fitbit_callback', as: 'fitbit_callback'
+
   resources :users
-  resources :daily_activites 
+  # resources :daily_activities 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
