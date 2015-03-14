@@ -18,7 +18,11 @@ class UsersController < ApplicationController
       puts "Could not parse YAML: #{e.message}"
       exit
     end
- 
+
+    config[:oauth][:token] = current_user.fitbit_token
+    config[:oauth][:secret] = current_user.fitbit_secret
+    config[:oauth][:user_id] = current_user.fitbit_user_id
+
     client = Fitgem::Client.new(config[:oauth])
  
     # With the token and secret, we will try to use them
@@ -40,7 +44,14 @@ class UsersController < ApplicationController
       redirect_to "https://www.fitbit.com/oauth/authorize?oauth_token=#{@@token}"
 
     end
- 
+
+    ## for the last 30 days...
+      ## check if db has daily_activity
+      ## if not, get it from the API
+
+    
+   @user = current_user 
+   render :show
 
   end
 
@@ -71,7 +82,12 @@ class UsersController < ApplicationController
     puts "Current User is: "+user_id
    
     config[:oauth].merge!(:token => access_token.token, :secret => access_token.secret, :user_id => user_id)
-    Pry.start(binding)
+    
+    @user = User.find(current_user.id)
+    @user.fitbit_token = config[:oauth][:token]
+    @user.fitbit_secret = config[:oauth][:secret]
+    @user.fitbit_user_id = config[:oauth][:user_id]
+    @user.save
    
     # Write the whole oauth token set back to the config file
     # mb: for some reason this line is not writing the new token to the file
