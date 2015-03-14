@@ -35,11 +35,33 @@ class UsersController < ApplicationController
         exit
       end
 
-      ## for the last 30 days...
-      ## check if db has daily_activity
-      ## if not, get it from the API
-
       @user = current_user 
+      activities = @user.daily_activities
+      activity_dates = activities.map do |activity|
+        activity.date
+      end
+      
+      i = 0
+      while i <= 30
+        date = Date.today
+        new_date = date - i
+
+        if activity_dates.include? new_date
+          puts "we have an activity for #{new_date}"
+        else
+          formatted_date = new_date.strftime("%Y-%m-%d")
+          fitbit_userinfo_hash = client.activities_on_date new_date
+          
+          DailyActivity.create({
+            user_id: @user.id,
+            date: new_date,
+            floors: fitbit_userinfo_hash['summary']['floors'],
+            distance: fitbit_userinfo_hash['summary']['distances'][0]['distance']
+            })
+        end
+        i += 1
+      end
+      binding.pry
       render :show
 
     # Without the secret and token, initialize the Fitgem::Client
