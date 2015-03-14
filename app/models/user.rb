@@ -46,4 +46,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def activity_totals(num)
+    activity_totals = {
+        floors: 0,
+        miles: 0
+      }
+    activities = self.daily_activities.order(date: :desc).limit(num)
+    activities.each do |activity|
+      activity_totals[:floors] += activity.floors
+      activity_totals[:miles] += activity.distance
+    end
+    return activity_totals
+  end
+
 end

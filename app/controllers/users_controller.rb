@@ -71,20 +71,20 @@ class UsersController < ApplicationController
 
     if params[:duration]
       num = params[:duration].to_i
-      api_array = get_date_strings(num)
-      all_activities = {
-        floors: 0,
-        miles: 0
-      }
-      api_array.each do |day|
-        fitbit_userinfo_hash = client.activities_on_date day
-        all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
-        all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
+      @fitbit_info = @user.activity_totals(num)
+      Pry.start(binding)
+      # api_array = get_date_strings(num)
+      # all_activities = {
+      #   floors: 0,
+      #   miles: 0
+      # }
+      # api_array.each do |day|
+      #   fitbit_userinfo_hash = client.activities_on_date day
+      #   all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
+      #   all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
+      # end
 
-      end
-
-      @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
-
+      # @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
     end
 
     respond_to do |format|
