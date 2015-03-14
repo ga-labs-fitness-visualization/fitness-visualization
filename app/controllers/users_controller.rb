@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
       @user = current_user 
       @user.check_save_activities(client)
-      render :show
+      redirect_to "/users/#{current_user.id}"
 
     else
       request_token = client.request_token
@@ -68,23 +68,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
     if params[:duration]
       num = params[:duration].to_i
       @fitbit_info = @user.activity_totals(num)
-      Pry.start(binding)
-      # api_array = get_date_strings(num)
-      # all_activities = {
-      #   floors: 0,
-      #   miles: 0
-      # }
-      # api_array.each do |day|
-      #   fitbit_userinfo_hash = client.activities_on_date day
-      #   all_activities[:floors] += fitbit_userinfo_hash['summary']['floors']
-      #   all_activities[:miles] += fitbit_userinfo_hash['summary']['distances'][0]['distance']
-      # end
-
-      # @fitbit_info = {miles: all_activities[:miles], floors: all_activities[:floors]}
     end
 
     respond_to do |format|
