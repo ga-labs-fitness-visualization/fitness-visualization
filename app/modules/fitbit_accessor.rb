@@ -1,6 +1,2 @@
-class FitbitAccessor
 
-  
-
-end
 
