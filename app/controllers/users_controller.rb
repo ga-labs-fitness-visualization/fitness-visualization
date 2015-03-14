@@ -34,6 +34,14 @@ class UsersController < ApplicationController
         puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
         exit
       end
+
+      ## for the last 30 days...
+      ## check if db has daily_activity
+      ## if not, get it from the API
+
+      @user = current_user 
+      render :show
+
     # Without the secret and token, initialize the Fitgem::Client
     # and send the user to login and get a verifier token
     else
@@ -42,17 +50,7 @@ class UsersController < ApplicationController
       @@secret = request_token.secret
 
       redirect_to "https://www.fitbit.com/oauth/authorize?oauth_token=#{@@token}"
-
     end
-
-    ## for the last 30 days...
-      ## check if db has daily_activity
-      ## if not, get it from the API
-
-    
-   @user = current_user 
-   render :show
-
   end
 
   def fitbit_callback
