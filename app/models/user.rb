@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	has_many :daily_activities
+	has_many :daily_activities, dependent: :destroy
 
   has_secure_password
 
