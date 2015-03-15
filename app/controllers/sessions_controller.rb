@@ -12,13 +12,17 @@ class SessionsController < ApplicationController
       @user.session_token = token
       @user.save
 
-      # redirect_to @user
-      redirect_to fitbit_login_url
+      # redirect_to fitbit_login_url
+      respond_to do |format|
+        format.html { redirect_to fitbit_login_url }
+        format.json { render json: {user_id: @user.id} }
+      end
     else
       @user = User.new(email: session_params[:email])
 
       render :new
     end
+
   end
 
   def destroy
@@ -31,7 +35,7 @@ class SessionsController < ApplicationController
       @user.save
     end
 
-    redirect_to login_path
+    redirect_to welcome_url
   end
 
   private
