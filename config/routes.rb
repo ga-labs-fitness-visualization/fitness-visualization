@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
-  root 'sessions#new'
+  get '/welcome' => 'welcome#welcome', as: 'welcome'
+
+  root 'welcome#welcome'
+  # root 'sessions#new'
   get '/login' =>'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

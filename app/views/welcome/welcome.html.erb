@@ -7,16 +7,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= link_to "all users", users_path %>
-    <% if current_user %>
-      <%= link_to current_user.name, current_user %>
-      <%= link_to "log out", logout_path%>
-    <% else %>
-      <%= link_to "log in", login_path %>
-      <%= link_to "sign up", signup_path %>
-    <% end %>
 
-  <%= yield %>
+    <h1>My FitCity</h1>
+    <p>What can you do?</p>
+
+    <button id="view-stats">View my stats</button>
+
+    <div class='modal-form'></div>
+
+    <%= yield %>
 
   </body>
 </html>
+
