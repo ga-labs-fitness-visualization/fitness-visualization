@@ -1,22 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>Leaderboard</h1>
 
+<h2>Distance</h2>
+<p>You are #<%= (@miles_leaders.index(current_user) + 1) %> in distance for the last seven days. </p>
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Miles</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <% @miles_leaders.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user %></td>
+        <% if user == current_user %>
+          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+        <% else %>
+          <td><%= link_to (user.name), user %></td>
+          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<h2>Floors</h2>
+<p>You are #<%= (@floors_leaders.index(current_user) + 1) %> in floors climbed for the last seven days. </p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Floors</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @floors_leaders.each do |user| %>
+      <tr>
+        <% if user == current_user %>
+          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+        <% else %>
+          <td><%= link_to (user.name), user %></td>
+          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Calories</h2>
+<p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories burned for the last seven days. </p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Calories</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calories_leaders.each do |user| %>
+      <tr>
+        <% if user == current_user %>
+          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+        <% else %>
+          <td><%= link_to (user.name), user %></td>
+          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

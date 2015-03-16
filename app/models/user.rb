@@ -19,8 +19,25 @@ class User < ActiveRecord::Base
     return correct_password.is_password?(pwd)
   end
 
+  def self.get_leaders(type, duration)
+    users = User.all
+    users.sort_by { |u| u.activity_totals(duration)[type.to_sym] }.reverse!
+  end
+
   def get_activity_dates
     return self.daily_activities.map { |a| a.date }
+  end
+
+  def get_today_activities(client)
+    today = Date.today.strftime("%Y-%m-%d")
+    fitbit_activities_hash = client.activities_on_date today
+    DailyActivity.create(
+      user_id: self.id,
+      date: today,
+      floors: fitbit_activities_hash['summary']['floors'],
+      distance: fitbit_activities_hash['summary']['distances'][0]['distance'],
+      calories: fitbit_activities_hash['summary']['activityCalories']
+      )
   end
 
   def check_save_activities(client)
@@ -28,10 +45,7 @@ class User < ActiveRecord::Base
     while i <= 30
       date = Date.today
       new_date = date - i
-        unless (new_date != Date.today) && (self.get_activity_dates.include? new_date)
-          if (new_date == Date.today) && (DailyActivity.find_by(date: Date.today))
-            DailyActivity.find_by(date: Date.today).destroy
-          end
+        unless self.get_activity_dates.include? new_date
           formatted_date = new_date.strftime("%Y-%m-%d")
           fitbit_activities_hash = client.activities_on_date new_date
           
@@ -56,12 +70,14 @@ class User < ActiveRecord::Base
   def activity_totals(num)
     activity_totals = {
         floors: 0,
-        miles: 0
+        miles: 0,
+        calories: 0
       }
     activities = self.daily_activities.order(date: :desc).limit(num)
     activities.each do |activity|
       activity_totals[:floors] += activity.floors
       activity_totals[:miles] += activity.distance
+      activity_totals[:calories] += activity.calories
     end
     return activity_totals
   end
