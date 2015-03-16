@@ -39,7 +39,7 @@ var makeSignupForm = function() {
       password: formData.password.value,
       password_confirmation: formData.password_confirmation.value
     }
-    signUpUser(newUserData);
+    signUpUser(userData);
   })
 
   // form switch click handler
@@ -89,8 +89,15 @@ var signUpUser = function(userData) {
     data: {
       user: userData
     },
+    dataType: 'json',
     success: function(data){
       console.log(data);
+      if (data.created) {
+        window.location.replace("/users/fitbitlogin");
+      } else {
+        console.log('something went wrong');
+        //append a notice to the form saying why the user couldn't be created ...data.errors in the json hash will contain specific info
+      }
     }
   })
 }
@@ -105,8 +112,12 @@ var logInUser = function(loginData) {
     dataType: 'json',
     success: function(data){
       console.log(data);
-      console.log('user id is ' + data.user_id);
-      window.location.replace("/users/" + data.user_id)
+      if (data.login) {
+        window.location.replace("/users/fitbitlogin");
+      } else {
+        console.log('wrong password');
+        // append a notice to the form saying the email & password don't match
+      }
     }
   })
 }

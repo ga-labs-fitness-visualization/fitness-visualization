@@ -12,15 +12,22 @@ class SessionsController < ApplicationController
       @user.session_token = token
       @user.save
 
-      # redirect_to fitbit_login_url
+      
       respond_to do |format|
         format.html { redirect_to fitbit_login_url }
-        format.json { render json: {user_id: @user.id} }
+        format.json { render json: {login: true} }
+        # ajax call in welcome.js will redirect to users/fitbitlogin
       end
+
     else
       @user = User.new(email: session_params[:email])
 
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.json { render json: {login: false}}
+      end
+
+      # render :new
     end
 
   end

@@ -95,17 +95,20 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
+      # if user sucessfully created,
+      # log them in and send them to OAuth
+      # ajax call in welcome.js will redirect to users/fitbitlogin
       if @user.save
         token = SecureRandom.urlsafe_base64
         session[:session_token] = token
         @user.session_token = token
         @user.save
         format.html { redirect_to fitbit_login_path }
-        # format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.json { render json: {created: true} }
+
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: {created: false, errors: @user.errors, status: :unprocessable_entity } }
       end
     end
   end
