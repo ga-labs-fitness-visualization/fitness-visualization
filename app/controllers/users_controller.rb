@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
       @user = current_user 
       @user.check_save_activities(client)
+      @user.get_avatar(client)
       redirect_to "/users/#{current_user.id}"
 
     else
@@ -61,6 +62,7 @@ class UsersController < ApplicationController
     @user.save
    
     @user.check_save_activities(client)
+    @user.get_avatar(client)
 
     redirect_to "/users/#{current_user.id}"
   end
