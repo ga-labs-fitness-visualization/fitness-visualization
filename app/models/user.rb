@@ -33,17 +33,24 @@ class User < ActiveRecord::Base
             DailyActivity.find_by(date: Date.today).destroy
           end
           formatted_date = new_date.strftime("%Y-%m-%d")
-          fitbit_userinfo_hash = client.activities_on_date new_date
+          fitbit_activities_hash = client.activities_on_date new_date
           
           DailyActivity.create(
             user_id: self.id,
             date: new_date,
-            floors: fitbit_userinfo_hash['summary']['floors'],
-            distance: fitbit_userinfo_hash['summary']['distances'][0]['distance']
+            floors: fitbit_activities_hash['summary']['floors'],
+            distance: fitbit_activities_hash['summary']['distances'][0]['distance'],
+            calories: fitbit_activities_hash['summary']['activityCalories']
             )
         end
       i += 1
     end
+  end
+
+  def get_avatar(client)
+    fitbit_userinfo_hash = client.user_info
+    self.avatar =fitbit_userinfo_hash["user"]["avatar150"]
+    self.save
   end
 
   def activity_totals(num)
