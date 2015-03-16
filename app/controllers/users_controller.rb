@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @miles_leaders = User.get_leaders('miles', 7)
+    @floors_leaders = User.get_leaders('floors', 7)
+    @calories_leaders = User.get_leaders('calories', 7)
   end
 
   def fitbit_login
@@ -26,6 +29,7 @@ class UsersController < ApplicationController
       end
 
       @user = current_user 
+      @user.get_today_activities(client)
       @user.check_save_activities(client)
       @user.get_avatar(client)
       redirect_to "/users/#{current_user.id}"
@@ -61,6 +65,7 @@ class UsersController < ApplicationController
     @user.fitbit_user_id = config[:oauth][:user_id]
     @user.save
    
+    @user.get_today_activities(client)
     @user.check_save_activities(client)
     @user.get_avatar(client)
 
