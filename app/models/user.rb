@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
           end
           formatted_date = new_date.strftime("%Y-%m-%d")
           fitbit_activities_hash = client.activities_on_date new_date
-          Pry.start(binding)
           
           DailyActivity.create(
             user_id: self.id,
