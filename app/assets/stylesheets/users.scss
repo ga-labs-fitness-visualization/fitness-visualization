@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#buildings-text {
+  position: relative;
+  top: 550px;
+}
+
 #buildings {
   width: 600px;
   margin: 0 auto;

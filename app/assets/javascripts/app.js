@@ -1,6 +1,4 @@
 $(function(){
-  //get user id variable from url
-  //kind of a hack but it works!
   var a = document.URL
   var id = a.substring(a.lastIndexOf('/') + 1, a.length);
 
@@ -16,78 +14,69 @@ $(function(){
     return totalDistance;
   }
 
-  var addSpinner = function() {
-    $('#buildings').html('<p>Loading your data...</p>')
-    var img = $("<img src='../assets/ajaxSpinner.gif'>").addClass('spinner');
-    $('#buildings').append( img );
+  // think we can lose this now... data loads quickly from db
+  // var addSpinner = function() {
+  //   $('#alerts').html('<p>Loading your data...</p>')
+  //   var img = $("<img src='../assets/ajaxSpinner.gif'>").addClass('spinner');
+  //   $('#alerts').append( img );
+  // }
+
+  var makeVisuals = function (data) {
+    
+    var totalDistance = parseDistance(data);
+    var walkCollection = Walk.makeWalks(totalDistance);
+    var walkCollectionView = new WalkCollectionView(walkCollection);
+    addWalkText(data);
+
+
+    var totalFloors = parseFloors(data);
+    var buildingCollection = Building.makeBuildings(totalFloors);
+    var buildingCollectionView = new BuildingCollectionView(buildingCollection);
+    addBuildingText(data);
   }
 
+  var addWalkText = function(data) {
+    $('#walks-text').append("<p>You walked around Manhattan " + (data.miles / 32).toFixed(2) + " times (" + data.miles + " miles)");
+  }
+
+  var addBuildingText = function(data) {
+    $('#buildings-text').append("<p>You climbed the Empire State Building " + (data.floors / 102).toFixed(2) + " times (" + data.floors + " floors)")
+  }
   //set click handlers on buttons
   // success callback function will initiate the object creation/collection/render/animation process
   $('#get-data-day').click(function(){
-    addSpinner();
     $.ajax({
       url: '/users/' + id,
       data: { duration: 1},
       dataType: 'json',
       method: 'GET',
       success: function(data){
-        console.log(data);
-        console.log('You climbed ' + parseFloors(data) + ' floors.');
-        console.log('You moved ' + parseDistance(data) + ' miles.');
-        var totalFloors = parseFloors(data);
-        var buildingCollection = Building.makeBuildings(totalFloors);
-        var buildingCollectionView = new BuildingCollectionView(buildingCollection);
-
-        var totalDistance = parseDistance(data);
-        var walkCollection = Walk.makeWalks(totalDistance);
-        var walkCollectionView = new WalkCollectionView(walkCollection);
+        makeVisuals(data);
       }
     })
   });
 
   $('#get-data-week').click(function(){
-    addSpinner();
     $.ajax({
       url: '/users/' + id,
       data: { duration: 7},
       dataType: 'json',
       method: 'GET',
       success: function(data){
-        console.log(data);
-        var totalFloors = parseFloors(data);
-        var buildingCollection = Building.makeBuildings(totalFloors);
-        var buildingCollectionView = new BuildingCollectionView(buildingCollection);
-
-        var totalDistance = parseDistance(data);
-        var walkCollection = Walk.makeWalks(totalDistance);
-        var walkCollectionView = new WalkCollectionView(walkCollection);
+        makeVisuals(data);
       }
     })
   });
 
   $('#get-data-month').click(function(){
-    // DO NOT DELETE!!!!
-    // $.ajax({
-    //   url: '/users/' + id,
-    //   data: { duration: 30},
-    //   dataType: 'json',
-    //   method: 'GET',
-    //   success: function(data){
-    //     console.log(data);
-    //     var totalFloors = parseFloors(data);
-    //     var buildingCollection = Building.makeBuildings(totalFloors);
-    //     var buildingCollectionView = new BuildingCollectionView(buildingCollection);
-    //   }
-    // })    
-    // DO NOT DELETE!!!
-      var totalFloors = 420
-      var buildingCollection = Building.makeBuildings(totalFloors);
-      var buildingCollectionView = new BuildingCollectionView(buildingCollection);
-
-      var totalDistance = 100;
-      var walkCollection = Walk.makeWalks(totalDistance);
-      var walkCollectionView = new WalkCollectionView(walkCollection);
+    $.ajax({
+      url: '/users/' + id,
+      data: { duration: 30},
+      dataType: 'json',
+      method: 'GET',
+      success: function(data){
+        makeVisuals(data);
+      }
+    })    
   });
-
 })
