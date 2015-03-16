@@ -8,11 +8,12 @@ WalkCollectionView.prototype.$el = function() {
 };
 
 WalkCollectionView.prototype.render = function() {
+  $('#walks-text').empty();
   this.$el().empty();
 
   this.collection.models.forEach(function(model){
     var newView = new WalkView(model);
-    newView.$el.css('top', '600px');
+    newView.$el.css('top', '200px');
     newView.$el.css('left', (this.collection.models.indexOf(model) * 250).toString() + 'px');
     this.$el().append(newView.render().$el);
     console.log(newView);
