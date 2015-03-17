@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def get_API_keys
+    return {
+      oauth:
+        { consumer_key: ENV["FIT_BIT_KEY"],
+          consumer_secret: ENV["FIT_BIT_SECRET"],
+          ssl: true
+        }
+      }
 		begin
       Fitgem::Client.symbolize_keys(YAML.load(File.open("lib/fitgem.yml")))
     rescue ArgumentError => e
