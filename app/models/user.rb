@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
   end
 
   def get_today_activities(client)
+    # first destroy previous saves of today's activity
+    activities = self.daily_activities
+    activities.each do |activity|
+      if activity.date == Date.today
+      activity.destroy
+      end
+    end
+
+    # then get latest activity for today & save to db
     today = Date.today.strftime("%Y-%m-%d")
     fitbit_activities_hash = client.activities_on_date today
     DailyActivity.create(
@@ -41,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def check_save_activities(client)
-    i = 0
+    i = 1
     while i <= 30
       date = Date.today
       new_date = date - i
