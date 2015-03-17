@@ -22,7 +22,7 @@ BuildingCollectionView.prototype.render = function() {
     this.$el().append(newView.render().$el);
     $( window ).scroll(function() {
         var aboveHeight = ( $('.dashboard-head').height() + $('#walks-text').height() + $('#walks').height() + $('#buildings-text').height() );
-      if ( $(window).scrollTop() >= aboveHeight ) {
+      if ( $(window).scrollTop() >= aboveHeight * 0.88 ) {
         setTimeout(function(){newView.showProgress(newView.model.progress)}, (_this.collection.models.indexOf(model) * 750 + 300));
       }
     })
