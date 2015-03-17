@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .avatar {
-  width: 100px;
+  width: 125px;
   border-radius: 100px;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 3px;
+  border: 4px solid black;
 }
 
 ul.dashboard-head {
@@ -49,12 +49,8 @@ ul.dashboard-head {
 
 .dashboard-section p {
   font-size: 36px;
+  line-height: 42px;
   margin-bottom: 20px;
-}
-
-#buildings-text {
-  margin-top: 60px;
-  
 }
 
 /*#buildings {
@@ -64,14 +60,62 @@ ul.dashboard-head {
 
 #walks {
   background-color: #05A9F4;
-  height: 500px;
+  min-height: 600px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
 }
 
+.miles-progress {
+  position: relative;
+  float: left;
+  height: 460px;
+  width: 172px;
+  margin: 40px 20px;
+}
+
+.walk {
+  position: absolute;
+  z-index: 1;
+  height: 100.4%;
+  width: 100%;
+  bottom: -1px;
+  left: 0px;
+  background-image: url('manhattan-blue.png');
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.walk-bar-left {
+  position: absolute;
+  z-index: 0;
+  height: 0%;
+  width: 47%;
+  bottom: 0px;
+  left: 1px;
+  background: red;
+  opacity: 0.55;
+}
+
+.walk-bar-right {
+  position: absolute;
+  z-index: 0;
+  height: 0%;
+  width: 51.8%;
+  top: 0px;
+  right: 1px;
+  background: red;
+  opacity: 0.55;
+}
+
+
+#buildings-text {
+  margin-top: 40px;
+}
+
 #buildings {
-  background-color: #A3D523;
-  height: 550px;
+  /*background-color: #A3D523;*/
+  background-color: #8DE12B;
+  min-height: 600px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
 }
@@ -106,7 +150,7 @@ ul.dashboard-head {
   width: 100%;
   bottom: -1px;
   left: 0px;
-  background-image: url(ESB-mask.png);
+  background-image: url(ESB-mask-green.png);
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -128,46 +172,4 @@ img.spinner {
   margin: 0 auto;
 }
 
-.miles-progress {
-  position: relative;
-  float: left;
-  height: 460px;
-  width: 212px;
-  /*left: 200px;*/
-  margin: 40px 20px;
-}
-
-.walk {
-  position: absolute;
-  z-index: 1;
-  height: 101%;
-  width: 100%;
-  bottom: 0px;
-  left: 0px;
-  background-image: url('manhattan-narrow.png');
-  background-position: 50% 50%;
-  background-size: cover;
-}
-
-.walk-bar-left {
-  position: absolute;
-  z-index: 0;
-  height: 0%;
-  width: 47%;
-  bottom: 0px;
-  left: 0px;
-  background: red;
-  opacity: 0.55;
-}
-
-.walk-bar-right {
-  position: absolute;
-  z-index: 0;
-  height: 0%;
-  width: 53%;
-  top: 0px;
-  right: 0px;
-  background: red;
-  opacity: 0.55;
-}
 

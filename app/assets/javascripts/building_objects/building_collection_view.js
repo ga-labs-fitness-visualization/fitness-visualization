@@ -16,10 +16,15 @@ BuildingCollectionView.prototype.render = function() {
   // var buildingCollectionView = this;
   this.collection.models.forEach(function(model){
     var newView = new BuildingView(model);
+    var _this = this;
     // newView.$el.css('top', '720px');
     // newView.$el.css('left', (this.collection.models.indexOf(model) * 200).toString() + 'px');
-    this.$el().append(newView.render().$el)
-    setTimeout(function(){newView.showProgress(newView.model.progress)}, (this.collection.models.indexOf(model) * 750));
-    // newView.showProgress(newView.model.progress);
+    this.$el().append(newView.render().$el);
+    $( window ).scroll(function() {
+        var aboveHeight = ( $('.dashboard-head').height() + $('#walks-text').height() + $('#walks').height() + $('#buildings-text').height() );
+      if ( $(window).scrollTop() >= aboveHeight ) {
+        setTimeout(function(){newView.showProgress(newView.model.progress)}, (_this.collection.models.indexOf(model) * 750 + 300));
+      }
+    })
   }.bind(this))
 }
