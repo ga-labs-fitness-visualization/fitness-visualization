@@ -16,8 +16,8 @@ BuildingCollectionView.prototype.render = function() {
   // var buildingCollectionView = this;
   this.collection.models.forEach(function(model){
     var newView = new BuildingView(model);
-    newView.$el.css('top', '720px');
-    newView.$el.css('left', (this.collection.models.indexOf(model) * 200).toString() + 'px');
+    // newView.$el.css('top', '720px');
+    // newView.$el.css('left', (this.collection.models.indexOf(model) * 200).toString() + 'px');
     this.$el().append(newView.render().$el)
     setTimeout(function(){newView.showProgress(newView.model.progress)}, (this.collection.models.indexOf(model) * 750));
     // newView.showProgress(newView.model.progress);

@@ -12,6 +12,92 @@
   }
 }
 
-body{
-	background-image: url("http://hdwallpapersfit.com/wp-content/uploads/2015/02/new-york-skyline-wallpapers-city-hdr.jpg");
+body.welcome {
+  background-image: url("https://lh3.googleusercontent.com/-eiJlaQKhe6c/VQdZN1VwULI/AAAAAAAAAQk/29OfqzKfBVw/w1916-h1278-no/landing%2Bpage%2Bbkgnd.png");
+  background-size: cover;
 }
+
+#tagline {
+  font-family: 'Wire One', sans-serif;
+  font-size: 96px;
+  color: white;
+  text-shadow: 1px 1px 1px #2c2c2e;
+  margin-left: 12%;
+  margin-top: 26%;
+}
+
+#view-stats {
+  position: absolute;
+  background: none;
+  color: white;
+  width: 200px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  border-radius: 40px;
+  border: 4px solid white;
+  left: 42.5%;
+  top: 75%;
+}
+
+#view-stats:focus {
+  outline: none;
+}
+
+#view-stats:hover {
+  background: #2c2c2e;
+  color: white;
+  border: 4px solid #2c2c2e;
+}
+
+.modal-form {
+  position:absolute;
+  display: none;
+  border-radius: 10px;
+  top: 40%;
+  left: 65%;
+  width: 400px;
+  height: 400px;
+  background: #1B4F63;
+  color: white;
+  /*box-shadow: 3px 3px 5px #aaa;*/
+}
+
+form, label, input {
+  display: block;
+}
+
+label, 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+#get-login-form, 
+#get-signup-form {
+  position: relative;
+  color: black;
+  margin-left: 120px;
+  margin-bottom: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+}
+
+label {
+  color: white;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  border-radius: 5px;
+  background: aliceblue;
+  color: black;
+}
+
+input[type="submit"]:hover {
+  background: dodgerblue;
+  color: white;
+}
+
+label:first-child {
+  margin-top: 20px;
+}
+

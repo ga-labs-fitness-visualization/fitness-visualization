@@ -5,18 +5,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Wire+One|Oswald' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body class="welcome">
+      <p id="tagline">What have you been up to?</p>
+      
+      <button id="view-stats">Let's do this!</button>
 
-    <h1>My FitCity</h1>
-    <p>What can you do?</p>
-
-    <button id="view-stats">View my stats</button>
-
-    <div class='modal-form'></div>
-
-    <%= yield %>
-
+      <div class='modal-form'></div>
   </body>
 </html>
 
