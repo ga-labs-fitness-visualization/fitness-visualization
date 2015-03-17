@@ -3,15 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#get-signup-form, #get-login-form {
-  color: blue;
-  text-decoration: underline;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 body.welcome {
   background-image: url("https://lh3.googleusercontent.com/-eiJlaQKhe6c/VQdZN1VwULI/AAAAAAAAAQk/29OfqzKfBVw/w1916-h1278-no/landing%2Bpage%2Bbkgnd.png");
   background-size: cover;
@@ -21,7 +12,7 @@ body.welcome {
   font-family: 'Wire One', sans-serif;
   font-size: 96px;
   color: white;
-  text-shadow: 1px 1px 1px #2c2c2e;
+  text-shadow: 1px 1px 1px black;
   margin-left: 12%;
   margin-top: 26%;
 }
@@ -85,15 +76,28 @@ label {
   color: white;
 }
 
+#get-signup-form, #get-login-form {
+  color: #2c2c2e;
+  text-decoration: underline;
+
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+
 input[type="submit"] {
-  padding: 10px;
-  border-radius: 5px;
-  background: aliceblue;
-  color: black;
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: 2px solid white;
+  background: none; 
+  color: white;
 }
 
 input[type="submit"]:hover {
-  background: dodgerblue;
+  background: #2c2c2e;
+  border: 2px solid #2c2c2e;
   color: white;
 }
 

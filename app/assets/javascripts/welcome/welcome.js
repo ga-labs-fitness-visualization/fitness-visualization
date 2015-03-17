@@ -26,7 +26,7 @@ var makeSignupForm = function() {
   signupForm.append("<p id='get-login-form'>I already have an account</p>")
   
   $('.modal-form').empty();
-  $('.modal-form').append( signupForm ).fadeIn('slow');
+  $('.modal-form').append( signupForm ).fadeIn('slow').animate({height: '400px', }, 300);
   
   // form submit click handler
   $('#signup').on('submit', function(event){
@@ -61,7 +61,7 @@ var makeLoginForm = function() {
   loginForm.append("<p id='get-signup-form'>Create an account</p>")
 
   $('.modal-form').empty();
-  $('.modal-form').append( loginForm );
+  $('.modal-form').append( loginForm ).animate({height: '250px', }, 300);
   
   // call submit click handler
   $('#login').on('submit', function(event){

@@ -1,4 +1,5 @@
 $(function(){
+  
   var a = document.URL
   var id = a.substring(a.lastIndexOf('/') + 1, a.length);
 
@@ -36,11 +37,11 @@ $(function(){
   }
 
   var addWalkText = function(data) {
-    $('#walks-text').append("<p>You walked around Manhattan " + (data.miles / 32).toFixed(2) + " times (" + data.miles.toFixed(2) + " miles)");
+    $('#walks-text').append("<p>You walked around Manhattan " + (data.miles / 32).toFixed(2) + " times (" + data.miles.toFixed(2) + " miles).");
   }
 
   var addBuildingText = function(data) {
-    $('#buildings-text').append("<p>You climbed the Empire State Building " + (data.floors / 102).toFixed(2) + " times (" + data.floors + " floors)")
+    $('#buildings-text').append("<p>You climbed the Empire State Building " + (data.floors / 102).toFixed(2) + " times (" + data.floors + " floors).")
   }
   //set click handlers on buttons
   // success callback function will initiate the object creation/collection/render/animation process
