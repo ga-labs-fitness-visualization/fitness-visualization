@@ -1,16 +1,15 @@
 #README
 Description: 
 
-My Fit City is a rails based web application. Utilizing the Fitbit Api.
-
-
-####Summary:
-
-#####My Fit City is an app that visualizes the activity tracked on your wearable FitBit health tracking device. The data is graphically illustrates distance or/and height in relation to real-world landmarks. Unlike other Fitbit apps that track activity, it/our solution translates the number of steps taken into distance walked around the perimeter of Manhattan, or the number of flights of stairs climbed into the number of floors climbed within/up the Empire State Building, giving the user a frame of reference for their productivity/physical activity. 
+Fitcity is a rails based web application utilizing the Fitbit Api.
 
 ####Technologies: 
 
 #####Ruby on Rails, JavaScript, jQuery, HTML, CSS, PostgreSQL, OAuth, FitBit API, Bootstrap
+
+####Summary:
+
+#####Fitcity is an app that visualizes the activity tracked on your wearable Fitbit health tracking device. The data graphically illustrates distance traveled and floors climbed in relation to real-world landmarks. Unlike other Fitbit apps that track activity, our solution translates the number of steps taken into distance walked around the perimeter of Manhattan, or the number of flights of stairs climbed into the number of floors climbed up the Empire State Building. This gives the user a clear and motivating frame of reference for their productivity/physical activity. 
 
 ####Our github procedure
 
@@ -22,3 +21,5 @@ My Fit City is a rails based web application. Utilizing the Fitbit Api.
 * everybody pulls down
 * BUT commit changes on your branch before you pull down from master
 
+#### Running this app
+Please note that for security reasons the OAuth consumer token and consumer secret are not hosted on Github. If you would like to test the app on your computer, get in touch with us and we can set you up.
