@@ -1,28 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<img src="<%=@user.avatar%>">
-<% if current_user == @user %>
-  <h2>Welcome, <%= @user.name %>!</h2>
-<% else %>
-  <h2><%= @user.name %> </h2>
-<% end %> 
+<ul class="dashboard-head">
+  <li><img class='avatar' src="<%=@user.avatar%>"></li>
+  <% if current_user == @user %>
+    <li><h2>Welcome, <%= @user.name %>!</h2></li>
+  <% else %>
+    <li><h2><%= @user.name %></h2></li>
+  <% end %> 
+  <li><button class='button' id='get-data-day'>day</button></li>
+  <li><button class='button' id='get-data-week'>week</button></li>
+  <li><button class='button' id='get-data-month'>month</button></li>
+</ul>
 
-<h2><%= @fitbit_info %> </h2>
+<div class="dashboard-section" id="alerts"></div>
 
-<button id='get-data-day'>day</button>
-<button id='get-data-week'>week</button>
-<button id='get-data-month'>month</button>
+<div class="dashboard-section" id="walks-text"></div>
+<div class="dashboard-section clearfix" id="walks"></div>
 
-<div id="alerts"></div>
+<div class="dashboard-section" id="buildings-text"></div>
+<div class="dashboard-section clearfix" id="buildings"></div>
 
-<div id="walks-text"></div>
-<div id="walks"></div>
-
-<div id="buildings-text"></div>
-<div id="buildings"></div>
-
-<div id="wine-text"></div>
-<div id="wine"></div>
+<div class="dashboard-section" id="wine-text"></div>
+<div class="dashboard-section" id="wine"></div>
 
 
 

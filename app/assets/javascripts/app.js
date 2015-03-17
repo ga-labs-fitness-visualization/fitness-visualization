@@ -36,7 +36,7 @@ $(function(){
   }
 
   var addWalkText = function(data) {
-    $('#walks-text').append("<p>You walked around Manhattan " + (data.miles / 32).toFixed(2) + " times (" + data.miles + " miles)");
+    $('#walks-text').append("<p>You walked around Manhattan " + (data.miles / 32).toFixed(2) + " times (" + data.miles.toFixed(2) + " miles)");
   }
 
   var addBuildingText = function(data) {

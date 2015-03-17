@@ -42,10 +42,10 @@
       <tr>
         <% if user == current_user %>
           <td><b> <%= link_to (user.name), user %> </b></td>
-          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+          <td><b><%= user.activity_totals(7)[:floors].to_i %></b></td>
         <% else %>
           <td><%= link_to (user.name), user %></td>
-          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+          <td><%= user.activity_totals(7)[:floors].to_i %> </td>
         <% end %>
       </tr>
     <% end %>
@@ -67,10 +67,10 @@
       <tr>
         <% if user == current_user %>
           <td><b> <%= link_to (user.name), user %> </b></td>
-          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+          <td><b><%= user.activity_totals(7)[:calories].to_i %></b></td>
         <% else %>
           <td><%= link_to (user.name), user %></td>
-          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+          <td><%= user.activity_totals(7)[:calories].to_i %> </td>
         <% end %>
       </tr>
     <% end %>

@@ -1,13 +1,19 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+p, ol, ul, td, h2, li {
+  font-family: 'Oswald', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }

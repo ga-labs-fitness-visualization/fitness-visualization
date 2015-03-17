@@ -26,7 +26,7 @@ var makeSignupForm = function() {
   signupForm.append("<p id='get-login-form'>I already have an account</p>")
   
   $('.modal-form').empty();
-  $('.modal-form').append( signupForm );
+  $('.modal-form').append( signupForm ).fadeIn('slow');
   
   // form submit click handler
   $('#signup').on('submit', function(event){
