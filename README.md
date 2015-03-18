@@ -16,6 +16,7 @@ https://trello.com/b/t1KqG1eU/ga-labs-hackaslackathon
 
 ####Team memebers: 
 Rob Montrone | Product Manager | https://github.com/montrone 
+
 Shaun Burley | UX Designer		 | http://www.shaunburley.com
 
 ####Our github procedure
