@@ -14,11 +14,10 @@ DailyActivity.destroy_all
 angelo = User.create(
 	name: 'Angelo',
 	email: 'angelo@example.com',
-	)
-
-DailyActivity.create(
-	user_id: angelo.id,
-	date: Date.new,
-	floors: 10,
-	distance: 3.3
+	password_digest: '$2a$10$IiGzW86RjIvKfD/uClzmG.XRZ4HP5ZNUDaZq90mZql71uF/Nzc6Qq',
+	session_token: "", 
+	fitbit_token: "baa8b28ece74b50b77d4dc4bcb660cdb",
+	fitbit_secret: "ea342798d031acb6a85c91cf90d274a3",
+	fitbit_user_id: "37KCH8",
+	avatar: "",
 	)
