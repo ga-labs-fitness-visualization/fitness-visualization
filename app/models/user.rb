@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
     return correct_password.is_password?(pwd)
   end
 
+  # issue
   def self.get_leaders(type, duration)
     users = User.all
     users.sort_by { |u| u.activity_totals(duration)[type.to_sym] }.reverse!
@@ -40,10 +41,11 @@ class User < ActiveRecord::Base
     # then get latest activity for today & save to db
     today = Date.today.strftime("%Y-%m-%d")
     fitbit_activities_hash = client.activities_on_date today
+
     DailyActivity.create(
       user_id: self.id,
       date: today,
-      floors: fitbit_activities_hash['summary']['floors'],
+      floors: fitbit_activities_hash['summary']['floors'] || 0,
       distance: fitbit_activities_hash['summary']['distances'][0]['distance'],
       calories: fitbit_activities_hash['summary']['activityCalories']
       )
@@ -51,7 +53,7 @@ class User < ActiveRecord::Base
 
   def check_save_activities(client)
     i = 1
-    while i <= 30
+    while i <= 31
       date = Date.today
       new_date = date - i
         unless self.get_activity_dates.include? new_date
@@ -61,7 +63,7 @@ class User < ActiveRecord::Base
           DailyActivity.create(
             user_id: self.id,
             date: new_date,
-            floors: fitbit_activities_hash['summary']['floors'],
+            floors: fitbit_activities_hash['summary']['floors'] || 0,
             distance: fitbit_activities_hash['summary']['distances'][0]['distance'],
             calories: fitbit_activities_hash['summary']['activityCalories']
             )
