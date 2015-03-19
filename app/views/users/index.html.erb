@@ -1,6 +1,27 @@
-<p id="notice"><%= notice %></p>
+<html>
 
+<head>
+
+
+
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+
+
+<body>
+<p id="notice"><%=notice %></p>
 <h1>Leaderboard</h1>
+  <div class="container">
+    <div class="row">
+
+    <div class="col-md-3">
+    <h2>Welcome, <%= current_user.name %>!</h2>
+    <img class='avatar' src="<%=current_user.avatar%>">
+
+     </div> 
+
+
+      <div id="distance" class="col-md-3">
 
 <h2>Distance</h2>
 <p>You are #<%= (@miles_leaders.index(current_user) + 1) %> in distance for the last seven days. </p>
@@ -27,6 +48,9 @@
   </tbody>
 </table>
 
+</div>
+
+<div id="floors" class="col-md-3">
 <h2>Floors</h2>
 <p>You are #<%= (@floors_leaders.index(current_user) + 1) %> in floors climbed for the last seven days. </p>
 <table>
@@ -52,6 +76,9 @@
   </tbody>
 </table>
 
+</div>
+
+<div id="calories" class="col-md-3">
 <h2>Calories</h2>
 <p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories burned for the last seven days. </p>
 <table>
@@ -76,4 +103,16 @@
     <% end %>
   </tbody>
 </table>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
+
+
+
+
 
