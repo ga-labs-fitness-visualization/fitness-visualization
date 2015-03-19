@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
 
 	has_many :daily_activities, dependent: :destroy
 
+  validates :email, presence: true
+  validates :email, :name, uniqueness: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+
   has_secure_password
 
   def self.find_by_credentials(args = {})
