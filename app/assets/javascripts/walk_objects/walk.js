@@ -30,6 +30,15 @@ Walk.prototype.getRightBarProgress = function(miles) {
 // will need refactoring if we ever want to make a series of different walks from the same total distance
 Walk.makeWalks = function(totalDistance) {
   var walkCollection = new WalkCollection();
+
+  if (totalDistance == 0) {
+    var newWalk = new Walk({
+      milesCompleted: 0
+    })
+    walkCollection.add(newWalk)
+    debugger;
+  }
+
   while (totalDistance > 0) {
     if (totalDistance >= 32) {
       var newWalk = new Walk({ milesCompleted: 32
