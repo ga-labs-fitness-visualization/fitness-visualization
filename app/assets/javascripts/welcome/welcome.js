@@ -10,7 +10,7 @@ $(function(){
 var makeSignupForm = function() {
   var signupForm = $("<form id='signup' action='/users' method='POST'></form>")
 
-  signupForm.append("<label for='user_name'>Name</label>")
+  signupForm.append("<label for='user_name'>Username</label>")
   signupForm.append("<input type='text' name='name'id='user_name'>")
 
   signupForm.append("<label for='user_email'>Email</label>")
