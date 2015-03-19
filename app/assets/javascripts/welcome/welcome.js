@@ -3,13 +3,14 @@ console.log('welcome.js loaded');
 $(function(){
   $('#view-stats').click(function(){
     console.log('you clicked view my stats');
-    makeSignupForm();
+    makeLoginForm();
   })
 })
 
 var makeSignupForm = function() {
   var signupForm = $("<form id='signup' action='/users' method='POST'></form>")
 
+  signupForm.append('<div id="errors"></div>')
   signupForm.append("<label for='user_name'>Username</label>")
   signupForm.append("<input type='text' name='name'id='user_name'>")
 
@@ -26,11 +27,12 @@ var makeSignupForm = function() {
   signupForm.append("<p id='get-login-form'>I already have an account</p>")
   
   $('.modal-form').empty();
-  $('.modal-form').append( signupForm ).fadeIn('slow').animate({height: '400px', }, 300);
+  $('.modal-form').append( signupForm ).animate({height: '420px', }, 300);
   
   // form submit click handler
   $('#signup').on('submit', function(event){
     event.preventDefault();
+    $('#errors').empty();
     console.log('you clicked signup');
     var formData = this.elements;
     var userData = {
@@ -50,6 +52,8 @@ var makeSignupForm = function() {
 
 var makeLoginForm = function() {
   var loginForm = $("<form id='login' action='/sessions' method='POST'></form>")
+  
+  loginForm.append('<div id="errors"></div>')
   loginForm.append("<label for='user_email'>Email</label>")
   loginForm.append("<input type='email' name='email'id='user_email'>")
   
@@ -61,11 +65,12 @@ var makeLoginForm = function() {
   loginForm.append("<p id='get-signup-form'>Create an account</p>")
 
   $('.modal-form').empty();
-  $('.modal-form').append( loginForm ).animate({height: '250px', }, 300);
+  $('.modal-form').append( loginForm ).fadeIn('slow').animate({height: '250px', }, 300);
   
   // call submit click handler
   $('#login').on('submit', function(event){
     event.preventDefault();
+    $('#errors').empty();
     console.log('you clicked login');
     var formData = this.elements;
     var loginData = {
@@ -96,6 +101,9 @@ var signUpUser = function(userData) {
         window.location.replace("/users/fitbitlogin");
       } else {
         console.log('something went wrong');
+        for(var prop in data.errors){
+          $('#errors').append("<p>" + prop + ' ' + data.errors[prop] + "</p>");
+        }
         //append a notice to the form saying why the user couldn't be created ...data.errors in the json hash will contain specific info
       }
     }
@@ -116,6 +124,7 @@ var logInUser = function(loginData) {
         window.location.replace("/users/fitbitlogin");
       } else {
         console.log('wrong password');
+        $('#errors').append("<p>please try again</p>");
         // append a notice to the form saying the email & password don't match
       }
     }

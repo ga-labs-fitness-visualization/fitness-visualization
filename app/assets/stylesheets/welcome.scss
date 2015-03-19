@@ -30,7 +30,11 @@ body.welcome {
   top: 75%;
 }
 
-#view-stats:focus {
+#view-stats:focus, 
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=submit]:focus {
   outline: none;
 }
 
@@ -44,13 +48,22 @@ body.welcome {
   position:absolute;
   display: none;
   border-radius: 10px;
-  top: 40%;
+  top: 39%;
   left: 65%;
   width: 400px;
-  height: 400px;
+  height: 250px;
   background: #1B4F63;
   color: white;
   /*box-shadow: 3px 3px 5px #aaa;*/
+}
+
+#errors {
+  margin: 20px 0 5px 120px;
+}
+
+#errors p {
+  margin: 3px;
+  color: red;
 }
 
 form, label, input {
