@@ -14,7 +14,15 @@ var Building = function (args) {
 // hard-coded to 102 floors
 // will need refactoring / rethinking if we ever want to make a series of different buildings
 Building.makeBuildings = function(totalFloors) {
-  var dayBuildingCollection = new BuildingCollection();
+  var buildingColection = new BuildingCollection();
+
+  if (totalFloors == 0) {
+    var newBuilding = new Building({
+      floorsCompleted: 0
+    })
+    buildingColection.add(newBuilding)
+  }
+
   while (totalFloors > 0) {
     if (totalFloors >= 102) {
       var newBuilding = new Building({
@@ -26,10 +34,10 @@ Building.makeBuildings = function(totalFloors) {
         floorsCompleted: totalFloors
       })
     };
-    dayBuildingCollection.add(newBuilding);
+    buildingColection.add(newBuilding);
     totalFloors -= 102;
   };
-  console.log(dayBuildingCollection);
-  $(dayBuildingCollection).trigger('change');
-  return dayBuildingCollection;
+  console.log(buildingColection);
+  $(buildingColection).trigger('change');
+  return buildingColection;
 }
