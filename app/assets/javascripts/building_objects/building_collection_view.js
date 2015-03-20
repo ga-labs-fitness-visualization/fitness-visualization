@@ -10,6 +10,7 @@ BuildingCollectionView.prototype.$el = function() {
 }
 
 BuildingCollectionView.prototype.render = function() {
+  $('#building-tweet-button').empty();
   $('#buildings-text').empty();
   this.$el().empty();
 

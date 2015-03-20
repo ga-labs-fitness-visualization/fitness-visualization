@@ -14,15 +14,43 @@
 
 <div class="dashboard-section" id="alerts"></div>
 
+<% if current_user == @user %>
+  <ul class="share-buttons">
+    <li id="walk-tweet-button"></li>
+    <li id="walk-fb-button"></li>
+  </ul>
+<% end %>
 <div class="dashboard-section" id="walks-text"></div>
 <div class="dashboard-section clearfix" id="walks"></div>
 
+<% if current_user == @user %>
+  <ul class="share-buttons">
+    <li id="building-tweet-button"></li>
+    <li id="building-fb-button"></li>
+  </ul>
+<% end %>
 <div class="dashboard-section" id="buildings-text"></div>
 <div class="dashboard-section clearfix" id="buildings"></div>
 
 <div class="dashboard-section" id="wine-text"></div>
 <div class="dashboard-section" id="wine"></div>
 
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, "script", "twitter-wjs"));</script>
 
 
 
