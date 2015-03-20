@@ -15,12 +15,6 @@ $(function(){
     return totalDistance;
   }
 
-  // think we can lose this now... data loads quickly from db
-  // var addSpinner = function() {
-  //   $('#alerts').html('<p>Loading your data...</p>')
-  //   var img = $("<img src='../assets/ajaxSpinner.gif'>").addClass('spinner');
-  //   $('#alerts').append( img );
-  // }
 
   var makeVisuals = function (data) {
     
@@ -28,12 +22,14 @@ $(function(){
     var walkCollection = Walk.makeWalks(totalDistance);
     var walkCollectionView = new WalkCollectionView(walkCollection);
     addWalkText(data);
+    addWalkTweetButton(data);
 
 
     var totalFloors = parseFloors(data);
     var buildingCollection = Building.makeBuildings(totalFloors);
     var buildingCollectionView = new BuildingCollectionView(buildingCollection);
     addBuildingText(data);
+    addBuildingTweetButton(data);
   }
 
   var addWalkText = function(data) {
@@ -43,6 +39,39 @@ $(function(){
   var addBuildingText = function(data) {
     $('#buildings-text').append("<p>You climbed the Empire State Building " + (data.floors / 102).toFixed(2) + " times (" + data.floors + " floors).")
   }
+
+  var addWalkTweetButton = function(data){
+    var url = document.URL;
+    var text = 'I walked around Manhattan ' + (data.miles / 32).toFixed(2) + ' times on Fitcity!';
+    twttr.widgets.createShareButton(
+      url,
+      document.getElementById('walk-tweet-button'),
+      {
+        count: 'none',
+        text: text,
+        size: 'large',
+        related: 'fitbit'
+      }).then(function (el) {
+        console.log("Button created.")
+    });
+  }
+
+  var addBuildingTweetButton = function(data){
+    var url = document.URL;
+    var text = 'I climbed the Empire State Building ' + (data.floors / 102).toFixed(2) + ' times on Fitcity!';
+    twttr.widgets.createShareButton(
+      url,
+      document.getElementById('building-tweet-button'),
+      {
+        count: 'none',
+        text: text,
+        size: 'large',
+        related: 'fitbit'
+      }).then(function (el) {
+        console.log("Button created.")
+    });
+  }
+
   //set click handlers on buttons
   // success callback function will initiate the object creation/collection/render/animation process
   $('#get-data-day').click(function(){

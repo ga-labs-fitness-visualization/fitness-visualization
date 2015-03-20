@@ -8,6 +8,7 @@ WalkCollectionView.prototype.$el = function() {
 };
 
 WalkCollectionView.prototype.render = function() {
+  $('#walk-tweet-button').empty();
   $('#walks-text').empty();
   this.$el().empty();
 
