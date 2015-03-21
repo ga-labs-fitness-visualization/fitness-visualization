@@ -32,8 +32,16 @@
 <div class="dashboard-section" id="buildings-text"></div>
 <div class="dashboard-section clearfix" id="buildings"></div>
 
+<% if current_user == @user %>
+  <ul class="share-buttons">
+    <li id="calorie-tweet-button"></li>
+    <li id="calorie-fb-button"></li>
+  </ul>
+<% end %>
 <div class="dashboard-section" id="wine-text"></div>
-<div class="dashboard-section" id="wine"></div>
+<div class="dashboard-section clearfix" id="wine"></div>
+
+
 
 <div>
     <script>window.twttr = (function(d, s, id) {

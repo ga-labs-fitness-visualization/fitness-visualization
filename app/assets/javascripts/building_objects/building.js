@@ -20,7 +20,7 @@ Building.makeBuildings = function(totalFloors) {
     var newBuilding = new Building({
       floorsCompleted: 0
     })
-    buildingColection.add(newBuilding)
+    buildingColection.add(newBuilding);
   }
 
   while (totalFloors > 0) {

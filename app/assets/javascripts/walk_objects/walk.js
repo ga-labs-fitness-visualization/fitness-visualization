@@ -36,7 +36,6 @@ Walk.makeWalks = function(totalDistance) {
       milesCompleted: 0
     })
     walkCollection.add(newWalk)
-    debugger;
   }
 
   while (totalDistance > 0) {

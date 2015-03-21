@@ -14,12 +14,9 @@ BuildingCollectionView.prototype.render = function() {
   $('#buildings-text').empty();
   this.$el().empty();
 
-  // var buildingCollectionView = this;
   this.collection.models.forEach(function(model){
     var newView = new BuildingView(model);
     var _this = this;
-    // newView.$el.css('top', '720px');
-    // newView.$el.css('left', (this.collection.models.indexOf(model) * 200).toString() + 'px');
     this.$el().append(newView.render().$el);
     $( window ).scroll(function() {
         var aboveHeight = ( $('.dashboard-head').height() + $('#walks-text').height() + $('#walks').height() + $('#buildings-text').height() );
