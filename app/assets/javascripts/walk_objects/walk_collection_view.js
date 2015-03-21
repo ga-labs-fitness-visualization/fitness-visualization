@@ -18,6 +18,6 @@ WalkCollectionView.prototype.render = function() {
     // newView.$el.css('left', (this.collection.models.indexOf(model) * 250).toString() + 'px');
     this.$el().append(newView.render().$el);
     console.log(newView);
-    setTimeout(function(){newView.showProgress();}, (this.collection.models.indexOf(model) * 2400));
+    setTimeout(function(){newView.showProgress();}, (this.collection.models.indexOf(model) * 1800));
   }.bind(this))
 }

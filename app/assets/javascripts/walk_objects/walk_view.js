@@ -14,10 +14,10 @@ WalkView.prototype.render = function() {
 
 WalkView.prototype.showProgress = function() {
   var _this = this;
-  $( this.$leftBar ).animate({height: this.model.leftBarProgress, }, 1200);
+  $( this.$leftBar ).animate({height: this.model.leftBarProgress, }, 900);
   setTimeout(function(){
     console.log( _this );
     $( _this.$rightBar ).animate({height: _this.model.rightBarProgress, 
-    }, 1200);
-  }, 1200);
+    }, 900);
+  }, 900);
 }

@@ -54,6 +54,7 @@ ul.share-buttons {
 
 .dashboard-section {
   width: 80%;
+  height: auto;
   margin: 0 auto;
 }
 
@@ -73,6 +74,7 @@ ul.share-buttons {
   min-height: 600px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+  margin-bottom: 40px;
 }
 
 .miles-progress {
@@ -117,17 +119,13 @@ ul.share-buttons {
   opacity: 0.55;
 }
 
-
-#walks {
-  margin-bottom: 40px;
-}
-
 #buildings {
-  /*background-color: #A3D523;*/
-  background-color: #8DE12B;
+  background-color: #8ADF18;
+  /*background-color: #8DE12B;*/
   min-height: 600px;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+  margin-bottom: 40px;
 }
 
 .floors-progress {
@@ -143,17 +141,17 @@ ul.share-buttons {
 
 .building {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   height: 100%;
   width: 100%;
   bottom: 0px;
   left: 0px;
-  background-image: url(<%= asset_path('ESB-no-bg.png') %>);
+  background-image: url(<%= asset_path('ESB-final.png') %>);
   background-position: 50% 50%;
   background-size: cover;
 }
 
-.building-mask {
+/*.building-mask {
   position: absolute;
   z-index: 2;
   height: 100%;
@@ -163,17 +161,55 @@ ul.share-buttons {
   background-image: url(<%= asset_path('ESB-mask-green.png') %>);
   background-position: 50% 50%;
   background-size: cover;
-}
+}*/
 
 .building-bar {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   height: 0%;
   width: 100%;
   bottom: 0px;
   left: 0px;
   background: red;
-  opacity: 0.35;
+  opacity: 0.7;
+}
+
+#wine {
+  background-color: #FFA000;
+  min-height: 600px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.calories-progress {
+  position: relative;
+  float: left;
+  height: 230px;
+  width: 72px;
+  margin: 20px 10px;
+}
+
+.bottle {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background-image: url(<%= asset_path('bottle-orange-background.png') %>);
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.bottle-bar {
+  position: absolute;
+  z-index: 0;
+  height: 0%;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background: #990012;
+  opacity: 1.0;
 }
 
 img.spinner {
