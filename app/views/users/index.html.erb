@@ -8,17 +8,21 @@
   <!-- Latest compiled and minified CSS -->
 
 
-<body>
+<body id="leaderboard">
 <p id="notice"><%=notice %></p>
 </br></br>
 
   <div class="container">
     <div class="row">
-     <h1>Leaderboards</h1>
+
+    </br></br></br>
     
-    <div class="col-md-3">
-    <h2>Welcome, <%= current_user.name %>!</h2>
+     <h1 class= "leaderboard_title">Leaderboards</h1>
+    
+    <div id="userleader" class="col-md-3">
     <img class='avatar' src="<%=current_user.avatar%>">
+    <h3> Welcome, <%= current_user.name %>!</h3>
+   
 
      </div> 
 
@@ -30,8 +34,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Miles</th>
+      <th>Name&nbsp;&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;&nbsp;Miles</th>
     </tr>
   </thead>
 
@@ -58,8 +62,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Floors</th>
+      <th>Name&nbsp;&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;&nbsp;Floors</th>
     </tr>
   </thead>
 
@@ -86,8 +90,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Calories</th>
+      <th>Name&nbsp;&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;&nbsp;Calories</th>
     </tr>
   </thead>
 
