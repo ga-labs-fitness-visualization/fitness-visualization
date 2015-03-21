@@ -34,8 +34,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name&nbsp;&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;&nbsp;Miles</th>
+      <th>Name&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;Miles</th>
     </tr>
   </thead>
 
@@ -43,10 +43,10 @@
     <% @miles_leaders.each do |user| %>
       <tr>
         <% if user == current_user %>
-          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b> <%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp; </b></td>
           <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
         <% else %>
-          <td><%= link_to (user.name), user %></td>
+          <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
           <td><%= user.activity_totals(7)[:miles].to_i %> </td>
         <% end %>
       </tr>
@@ -62,8 +62,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name&nbsp;&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;&nbsp;Floors</th>
+      <th>Name&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;Floors</th>
     </tr>
   </thead>
 
@@ -71,10 +71,10 @@
     <% @floors_leaders.each do |user| %>
       <tr>
         <% if user == current_user %>
-          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b> <%= link_to (user.name), user  %> &nbsp;&nbsp;&nbsp;</b></td>
           <td><b><%= user.activity_totals(7)[:floors].to_i %></b></td>
         <% else %>
-          <td><%= link_to (user.name), user %></td>
+          <td><%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</td>
           <td><%= user.activity_totals(7)[:floors].to_i %> </td>
         <% end %>
       </tr>
@@ -90,8 +90,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name&nbsp;&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;&nbsp;Calories</th>
+      <th>Name&nbsp;&nbsp; </th> 
+      <th>&nbsp;&nbsp;Calories</th>
     </tr>
   </thead>
 
@@ -99,11 +99,11 @@
     <% @calories_leaders.each do |user| %>
       <tr>
         <% if user == current_user %>
-          <td><b> <%= link_to (user.name), user %> </b></td>
+          <td><b> <%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</b></td>
           <!-- number_with_delimiter Rails helper to put comma in 1,000s -->
           <td><b><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %></b></td>
         <% else %>
-          <td><%= link_to (user.name), user %></td>
+          <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
           <td><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %> </td>
         <% end %>
       </tr>
