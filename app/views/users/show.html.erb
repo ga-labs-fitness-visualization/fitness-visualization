@@ -1,18 +1,38 @@
+
+<body id="dashboard">
+
+<div class="container">
+  <div class="row">
+
 <p id="notice"><%= notice %></p>
 
+<div class="col-md-7 col-md-offset-5">
 <ul class="dashboard-head">
+  <li><button class='button' id='get-data-day'> Day </button></li>
+  <li><button class='button' id='get-data-week'> Week </button></li>
+  <li><button class='button' id='get-data-month'> Month </button></li>
+</ul>
+</div>
+
+
+
+<div id="userleader" class="col-md-2">
+<ul class="dashboard-head">
+
   <li><img class='avatar' src="<%=@user.avatar%>"></li>
   <% if current_user == @user %>
     <li><h2>Welcome, <%= @user.name %>!</h2></li>
   <% else %>
     <li><h2><%= @user.name %></h2></li>
   <% end %> 
-  <li><button class='button' id='get-data-day'>day</button></li>
-  <li><button class='button' id='get-data-week'>week</button></li>
-  <li><button class='button' id='get-data-month'>month</button></li>
 </ul>
 
+</div>
+
+
+  <div class="col-md-10">
 <div class="dashboard-section" id="alerts"></div>
+
 
 <% if current_user == @user %>
   <ul class="share-buttons">
@@ -20,18 +40,25 @@
     <li id="walk-fb-button"></li>
   </ul>
 <% end %>
+
 <div class="dashboard-section" id="walks-text"></div>
 <div class="dashboard-section clearfix" id="walks"></div>
+</div>
 
+<div class="col-md-10 col-md-offset-2">
 <% if current_user == @user %>
   <ul class="share-buttons">
     <li id="building-tweet-button"></li>
     <li id="building-fb-button"></li>
   </ul>
 <% end %>
+
 <div class="dashboard-section" id="buildings-text"></div>
 <div class="dashboard-section clearfix" id="buildings"></div>
+</div>
 
+
+<div class="col-md-10 col-md-offset-2">
 <% if current_user == @user %>
   <ul class="share-buttons">
     <li id="calorie-tweet-button"></li>
@@ -40,8 +67,7 @@
 <% end %>
 <div class="dashboard-section" id="wine-text"></div>
 <div class="dashboard-section clearfix" id="wine"></div>
-
-
+ </div>
 
 <div>
     <script>window.twttr = (function(d, s, id) {
@@ -61,6 +87,10 @@
     return t;
   }(document, "script", "twitter-wjs"));</script>
 </div>
+
+</div>
+</div>
+</body>
 
 
 
