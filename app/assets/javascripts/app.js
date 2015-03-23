@@ -1,11 +1,40 @@
 $(function(){
   
+      window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+     
+      return t;
+    }(document, "script", "twitter-wjs"));
+
   var a = document.URL
   var id = a.substring(a.lastIndexOf('/') + 1, a.length);
   var twitterUrl = 'https://lit-tor-1581.herokuapp.com/'
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  getDayOnLoad = function(){
+      $.ajax({
+      url: '/users/' + id,
+      data: { duration: 1},
+      dataType: 'json',
+      method: 'GET',
+      success: function(data){
+        makeVisuals(data);
+      }
+    })
   }
 
   //these functions get floors and distance out of the json object
@@ -62,7 +91,7 @@ $(function(){
   var addWalkTweetButton = function(data){
     // currently not using dashboard url
     var url = document.URL;
-    var text = 'I walked around Manhattan ' + (data.miles / 32).toFixed(2) + ' times on Fitcity!';
+    var text = 'I walked around Manhattan ' + (data.miles / 32).toFixed(2) + ' times on Fitcity! Join me!';
     twttr.widgets.createShareButton(
       twitterUrl,
       document.getElementById('walk-tweet-button'),
@@ -79,7 +108,7 @@ $(function(){
 
   var addBuildingTweetButton = function(data){
     var url = document.URL;
-    var text = 'I climbed the Empire State Building ' + (data.floors / 102).toFixed(2) + ' times on Fitcity!';
+    var text = 'I climbed the Empire State Building ' + (data.floors / 102).toFixed(2) + ' times on Fitcity! Join me!';
     twttr.widgets.createShareButton(
       twitterUrl,
       document.getElementById('building-tweet-button'),
@@ -96,7 +125,7 @@ $(function(){
 
   var addBottleTweetButton = function(data){
     var url = document.URL;
-    var text = "I worked off the calories in " + (data.calories / 625).toFixed(2) + " bottles of wine on Fitcity!";
+    var text = "I worked off the calories in " + (data.calories / 625).toFixed(2) + " bottles of wine on Fitcity! Join me!" ;
     twttr.widgets.createShareButton(
       twitterUrl,
       document.getElementById('calorie-tweet-button'),
@@ -110,6 +139,8 @@ $(function(){
         console.log("Button created.")
     });
   }
+
+  getDayOnLoad();
 
   //set click handlers on buttons
   // success callback function will initiate the object creation/collection/render/animation process
@@ -149,3 +180,6 @@ $(function(){
     })    
   });
 })
+
+
+

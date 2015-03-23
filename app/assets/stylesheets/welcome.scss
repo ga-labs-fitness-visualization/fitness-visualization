@@ -3,18 +3,19 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.welcome {
+#welcome {
   background-image: url("https://lh3.googleusercontent.com/-eiJlaQKhe6c/VQdZN1VwULI/AAAAAAAAAQk/29OfqzKfBVw/w1916-h1278-no/landing%2Bpage%2Bbkgnd.png");
   background-size: cover;
+  background-color: #fd6f43;
 }
 
 #tagline {
   font-family: 'Wire One', sans-serif;
   font-size: 96px;
   color: white;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 3px 3px 3px black;
   margin-left: 12%;
-  margin-top: 26%;
+  margin-top: 21%;
 }
 #view-stats {
   position: absolute;
@@ -89,7 +90,7 @@ label {
 }
 
 #get-signup-form, #get-login-form {
-  color: #2c2c2e;
+  color: #a4a4a4;
   text-decoration: underline;
 
   &:hover {
@@ -115,5 +116,45 @@ input[type="submit"]:hover {
 
 label:first-child {
   margin-top: 20px;
+}
+
+#how-it-works {
+  position: absolute;
+  background: none;
+  color: white;
+  width: 400px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  border-radius: 40px;
+  border: 4px solid white;
+  left: 32%;
+  top: 70%;
+  outline-style:none;
+}
+
+#how-it-works:hover {
+  background: #2c2c2e;
+  color: white;
+  border: 4px solid #2c2c2e;
+}
+
+#okkk {
+
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 28px;
+  line-height: 35px;
+  /*font-family: 'Oswald', sans-serif;*/
+  font-family: 'wire one', sans-serif;
+  text-align: center;
+  position: absolute;
+  border-radius: 10px;
+  top: 3%;
+  left: 65%;
+  width: 400px;
+  height: 250px;
+  background: #1B4F63;
+  color: white;
 }
 

@@ -22,7 +22,9 @@
     <div id="userleader" class="col-md-3">
     <img class='avatar' src="<%=current_user.avatar%>">
     <h3> Welcome, <%= current_user.name %>!</h3>
-   
+  </br></br></br>
+      <a id="links" href="https://www.facebook.com/fitcity.fitbit?ref=hl"> Like us on Facebook! </a> </br>
+      <a id="links" href="https://twitter.com/FitcityApp"> Follow us on Twitter! </br> @FitcityApp</a>
 
      </div> 
 
@@ -86,7 +88,7 @@
 
 <div id="calories" class="col-md-3">
 <h2>CALORIES</h2>
-<p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories burned for the last seven days. </p>
+<p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories for the last seven days. </p>
 <table>
   <thead>
     <tr>
