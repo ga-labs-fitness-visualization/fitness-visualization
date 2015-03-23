@@ -1,7 +1,8 @@
 console.log('welcome.js loaded');
 
+
 $(function(){
-  $('#view-stats').click(function(){
+  $('#how-it-works').click(function(){
     console.log('you clicked view my stats');
     makeLoginForm();
   })
@@ -130,4 +131,33 @@ var logInUser = function(loginData) {
     }
   })
 }
+
+$('#how-it-works').click(function(){
+  console.log('okk')
+    howItWorks();
+  })
+
+$(function(){
+  $('#how-it-works').click(function(){
+  console.log('okk')
+    howItWorks();
+  })
+})
+
+var howItWorks = function(){
+
+  console.log('you got it');
+  var howItWorksWindow = $("<div> Hello world </div>")
+  $('#test').append("<div id='okkk'> <b>HOW IT WORKS: </b></br> fit|city shows your Fitbit data in a whole new way. See your progress around Manhattan island, up the Empire State Building, and more. . . </br>Climb the leaderboard and share your accomplishments with friends! </div>").animate({height: '250px', }, 300);
+  
+}
+
+
+
+
+
+
+
+
+
 
