@@ -19,7 +19,7 @@ BottleCollectionView.prototype.render = function() {
     $( window ).scroll(function(){
       var wineTextOffset = $('#wine-text').offset().top;
       var scrollTop = $(window).scrollTop();
-      if ( wineTextOffset - scrollTop <= 300 ) {
+      if ( wineTextOffset - scrollTop <= 400 ) {
         console.log('got to the wine!');
         setTimeout(function(){newView.showProgress(newView.model.progress);}, (_this.collection.models.indexOf(model) * 500 + 100));
       }
