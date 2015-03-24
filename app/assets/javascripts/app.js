@@ -1,20 +1,4 @@
 $(function(){
-  
-  window.twttr = (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
-
-    t._e = [];
-    t.ready = function(f) {
-      t._e.push(f);
-    };
-    return t;
-  }(document, "script", "twitter-wjs"));
 
   var a = document.URL
   var id = a.substring(a.lastIndexOf('/') + 1, a.length);
@@ -59,20 +43,27 @@ $(function(){
     var walkCollection = Walk.makeWalks(totalDistance);
     var walkCollectionView = new WalkCollectionView(walkCollection);
     addWalkText(data);
-    addWalkTweetButton(data);
+    setTimeout (function(){
+      addWalkTweetButton(data);
+    }, 1500);
 
 
     var totalFloors = parseFloors(data);
     var buildingCollection = Building.makeBuildings(totalFloors);
     var buildingCollectionView = new BuildingCollectionView(buildingCollection);
     addBuildingText(data);
-    addBuildingTweetButton(data);
+    setTimeout (function(){
+      addBuildingTweetButton(data);
+    }, 1500);
 
     var totalCalories = parseCalories(data);
     var bottleCollection = Bottle.makeBottles(totalCalories);
     var bottleCollectionView = new BottleCollectionView(bottleCollection);
     addBottleText(data);
-    addBottleTweetButton(data);
+    setTimeout (function(){
+      addBottleTweetButton(data);
+    }, 1500);
+    
   }
 
   var addWalkText = function(data) {
@@ -89,6 +80,7 @@ $(function(){
 
   var addWalkTweetButton = function(data){
     // currently not using dashboard url
+    $('#walk-tweet-button').empty();
     var url = document.URL;
     var text = 'I walked around Manhattan ' + (data.miles / 32).toFixed(2) + ' times on Fitcity! Join me!';
     twttr.widgets.createShareButton(
@@ -106,6 +98,7 @@ $(function(){
   }
 
   var addBuildingTweetButton = function(data){
+    $('#building-tweet-button').empty();
     var url = document.URL;
     var text = 'I climbed the Empire State Building ' + (data.floors / 102).toFixed(2) + ' times on Fitcity! Join me!';
     twttr.widgets.createShareButton(
@@ -123,6 +116,7 @@ $(function(){
   }
 
   var addBottleTweetButton = function(data){
+    $('#calorie-tweet-button').empty();
     var url = document.URL;
     var text = "I worked off the calories in " + (data.calories / 625).toFixed(2) + " bottles of wine on Fitcity! Join me!" ;
     twttr.widgets.createShareButton(
