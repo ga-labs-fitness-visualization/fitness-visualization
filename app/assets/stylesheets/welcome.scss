@@ -6,7 +6,9 @@
 #welcome {
   background-image: url("https://lh3.googleusercontent.com/-eiJlaQKhe6c/VQdZN1VwULI/AAAAAAAAAQk/29OfqzKfBVw/w1916-h1278-no/landing%2Bpage%2Bbkgnd.png");
   background-size: cover;
+  background-repeat: no-repeat;
   background-color: #fd6f43;
+
 }
 
 #tagline {
@@ -14,8 +16,12 @@
   font-size: 96px;
   color: white;
   text-shadow: 3px 3px 3px black;
-  margin-left: 12%;
-  margin-top: 21%;
+  /*margin-left: 12%;
+  margin-top: 21%;*/
+  text-align: center;
+  margin-right: 40%;
+  margin-top: 18%;
+  line-height: initial;
 }
 #view-stats {
   position: absolute;
