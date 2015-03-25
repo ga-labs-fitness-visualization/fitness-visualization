@@ -8,114 +8,112 @@
   <!-- Latest compiled and minified CSS -->
 
 
-<body id="leaderboard">
-<p id="notice"><%=notice %></p>
-</br></br>
+  <body id="leaderboard">
+    <p id="notice"><%=notice %></p>
 
-  <div class="container">
-    <div class="row">
+    <div class="container">
+      <div class="row">
 
-    </br></br></br>
-    
-     <h1 class= "leaderboard_title">Leaderboards</h1>
-    
-    <div id="userleader" class="col-md-3">
-    <img class='avatar' src="<%=current_user.avatar%>">
-    <h3> Welcome, <%= current_user.name %>!</h3>
-  </br></br></br>
+      </br></br></br>
+
+      <h1 class= "leaderboard_title">Leaderboards</h1>
+
+      <div id="userleader" class="col-md-3">
+        <img class='avatar' src="<%=current_user.avatar%>">
+        <h3> Welcome, <%= current_user.name %>!</h3>
+      </br></br></br>
       <a id="links" href="https://www.facebook.com/fitcity.fitbit?ref=hl" target="_blank"> Like us on Facebook! </a> </br>
       <a id="links" href="https://twitter.com/FitcityApp" target="_blank"> Follow us on Twitter! </br> @FitcityApp</a>
 
-     </div> 
+    </div> 
 
 
-      <div id="distance" class="col-md-3">
+    <div id="distance" class="col-md-3">
 
-<h2>DISTANCE</h2>
-<p>You are #<%= (@miles_leaders.index(current_user) + 1) %> in distance for the last seven days. </p>
-<table>
-  <thead>
-    <tr>
-      <th>Name&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;Miles</th>
-    </tr>
-  </thead>
+      <h2>DISTANCE</h2>
+      <p>You are #<%= (@miles_leaders.index(current_user) + 1) %> in distance for the last seven days. </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name&nbsp;&nbsp; </th> 
+            <th>&nbsp;&nbsp;Miles</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @miles_leaders.each do |user| %>
-      <tr>
-        <% if user == current_user %>
-          <td id="user_name"><b> <%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp; </b></td>
-          <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
-        <% else %>
-          <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
-          <td><%= user.activity_totals(7)[:miles].to_i %> </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @miles_leaders.each do |user| %>
+          <tr>
+            <% if user == current_user %>
+            <td id="user_name"><b> <%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp; </b></td>
+            <td><b><%= user.activity_totals(7)[:miles].to_i %></b></td>
+            <% else %>
+            <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
+            <td><%= user.activity_totals(7)[:miles].to_i %> </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-</div>
+    <div id="floors" class="col-md-3">
+      <h2>FLOORS</h2>
+      <p>You are #<%= (@floors_leaders.index(current_user) + 1) %> in floors climbed for the last seven days. </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name&nbsp;&nbsp; </th> 
+            <th>&nbsp;&nbsp;Floors</th>
+          </tr>
+        </thead>
 
-<div id="floors" class="col-md-3">
-<h2>FLOORS</h2>
-<p>You are #<%= (@floors_leaders.index(current_user) + 1) %> in floors climbed for the last seven days. </p>
-<table>
-  <thead>
-    <tr>
-      <th>Name&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;Floors</th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @floors_leaders.each do |user| %>
+          <tr>
+            <% if user == current_user %>
+            <td id="user_name"><b> <%= link_to (user.name), user  %> &nbsp;&nbsp;&nbsp;</b></td>
+            <td><b><%= user.activity_totals(7)[:floors].to_i %></b></td>
+            <% else %>
+            <td><%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</td>
+            <td><%= user.activity_totals(7)[:floors].to_i %> </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <tbody>
-    <% @floors_leaders.each do |user| %>
-      <tr>
-        <% if user == current_user %>
-          <td id="user_name"><b> <%= link_to (user.name), user  %> &nbsp;&nbsp;&nbsp;</b></td>
-          <td><b><%= user.activity_totals(7)[:floors].to_i %></b></td>
-        <% else %>
-          <td><%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</td>
-          <td><%= user.activity_totals(7)[:floors].to_i %> </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
 
-</div>
+    <div id="calories" class="col-md-3">
+      <h2>CALORIES</h2>
+      <p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories for the last seven days. </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Name&nbsp;&nbsp; </th> 
+            <th>&nbsp;&nbsp;Calories</th>
+          </tr>
+        </thead>
 
-<div id="calories" class="col-md-3">
-<h2>CALORIES</h2>
-<p>You are #<%= (@calories_leaders.index(current_user) + 1) %> in calories for the last seven days. </p>
-<table>
-  <thead>
-    <tr>
-      <th>Name&nbsp;&nbsp; </th> 
-      <th>&nbsp;&nbsp;Calories</th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @calories_leaders.each do |user| %>
+          <tr>
+            <% if user == current_user %>
+            <td id="user_name"><b> <%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</b></td>
+            <!-- number_with_delimiter Rails helper to put comma in 1,000s -->
+            <td ><b><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %></b></td>
+            <% else %>
+            <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
+            <td><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %> </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <tbody>
-    <% @calories_leaders.each do |user| %>
-      <tr>
-        <% if user == current_user %>
-          <td id="user_name"><b> <%= link_to (user.name), user %> &nbsp;&nbsp;&nbsp;</b></td>
-          <!-- number_with_delimiter Rails helper to put comma in 1,000s -->
-          <td ><b><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %></b></td>
-        <% else %>
-          <td><%= link_to (user.name), user %>&nbsp;&nbsp;&nbsp;</td>
-          <td><%= number_with_delimiter(user.activity_totals(7)[:calories].to_i, :delimiter => ',') %> </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </div>
 
-</div>
-
-</div>
+  </div>
 </div>
 
 </body>
