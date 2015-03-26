@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'welcome#welcome'
   # root 'sessions#new'
-  get '/login' =>'sessions#new'
+  # get '/login' =>'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
